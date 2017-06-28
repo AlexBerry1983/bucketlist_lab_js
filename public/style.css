@@ -1,0 +1,30 @@
+h1 {
+  text-align: center;
+}
+
+body {
+  text-align: center;
+}
+
+li {
+  list-style: none;
+  text-align: center;
+}
+
+#select {
+  align-self: center;
+}
+
+button {
+  margin-left: 5em;
+}
+
+#search {
+  align-self: center;
+}
+
+#main-map {
+  height:500px;
+  width:500px;
+  margin: auto;
+}
