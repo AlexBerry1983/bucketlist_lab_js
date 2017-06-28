@@ -1,3 +1,5 @@
+
+
 var app = function(){
   var url = 'https://restcountries.eu/rest/v2';
   var request = new XMLHttpRequest();
@@ -11,15 +13,14 @@ var app = function(){
   request.send()
 }
 
+var handleSelectChanged = function(event){
+  var selectedCountry = countries[this.value]
+    var bucketListP = document.createElement('p')
+    document.body.appendChild(bucketListP)
+    bucketListP.innerText = selectedCountry.name;
+}
+
 var createSelector = function(countries){
-
-  var handleSelectChanged = function(event){
-    var selectedCountry = countries[this.value]
-      var bucketListP = document.createElement('p')
-      document.body.appendChild(bucketListP)
-      bucketListP.innerText = selectedCountry.name;
-  }
-
   var div = document.getElementById('countries-selector');
   var select = document.createElement('select')
     countries.forEach(function(country, index){

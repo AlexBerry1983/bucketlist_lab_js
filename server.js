@@ -3,7 +3,7 @@ var app = express();
 var path = require('path');
 
 app.use(require('./controllers/index'));
-app.use(express.static('public'));
+app.use(express.static('client/build'));
 
 var server = app.listen(3000, function () {
   var host = server.address().address;

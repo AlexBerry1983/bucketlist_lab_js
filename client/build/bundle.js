@@ -70,8 +70,24 @@
 var UI = __webpack_require__(1);
 
 var app = function() {
+  var ui = new UI();
+
+  /////////
+  var url = 'https://restcountries.eu/rest/v2';
+  var request = new XMLHttpRequest();
+
+  request.open('GET', url)
+  request.addEventListener('load', function(){
+    var jsonString = request.responseText
+    var countries = JSON.parse(jsonString)
+    ui.createSelector(countries)
+  })
+  request.send()
+  /////////////
+
+
+  
   console.log("this is the app")
-  new UI();
 }
 
 window.addEventListener('load', app);
@@ -80,6 +96,8 @@ window.addEventListener('load', app);
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
+
+
 
 var app = function(){
   var url = 'https://restcountries.eu/rest/v2';
@@ -94,15 +112,14 @@ var app = function(){
   request.send()
 }
 
+var handleSelectChanged = function(event){
+  var selectedCountry = countries[this.value]
+    var bucketListP = document.createElement('p')
+    document.body.appendChild(bucketListP)
+    bucketListP.innerText = selectedCountry.name;
+}
+
 var createSelector = function(countries){
-
-  var handleSelectChanged = function(event){
-    var selectedCountry = countries[this.value]
-      var bucketListP = document.createElement('p')
-      document.body.appendChild(bucketListP)
-      bucketListP.innerText = selectedCountry.name;
-  }
-
   var div = document.getElementById('countries-selector');
   var select = document.createElement('select')
     countries.forEach(function(country, index){
